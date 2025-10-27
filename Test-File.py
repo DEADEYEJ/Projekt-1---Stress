@@ -26,7 +26,7 @@ X = data[["Sleep_Quality", "Diet_Quality", "Physical_Activity", "Social_Support"
 y = data[["Stress_Level"]].values
 
 # Split data into training and test
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)
+#X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)
 
 # Define classifiers
 knn_classifier = KNeighborsClassifier(n_neighbors=20) # Change hyperparameters
