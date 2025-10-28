@@ -8,7 +8,7 @@ from sklearn.metrics import accuracy_score
 
 data = pd.read_csv('Stress.csv')
 
-data.drop(["Course", "Gender", "Depression_Score", "Anxiety_Score", "Relationship_Status", "Substance_Use", "Extracurricular_Involvement", "Residence_Type"],axis=1,inplace=True) # Drop columns we don't need
+data.drop(["Course", "Gender", "Relationship_Status", "Substance_Use", "Residence_Type"],axis=1,inplace=True) # Drop columns we don't need
 data.dropna(inplace=True) # Drop nan rows
 data['Sleep_Quality'].replace(['Good','Average','Poor'],[2,1,0],inplace=True) # Replace strings with 0 and 1
 data['Diet_Quality'].replace(['Good','Average','Poor'],[2,1,0],inplace=True)
@@ -18,13 +18,15 @@ data["Counseling_Service_Use"].replace(["Frequently", "Occasionally", "Never"],[
 data["Family_History"].replace(["Yes","No"],[1,0],inplace=True)
 data["Chronic_Illness"].replace(["Yes","No"],[1,0],inplace=True)
 data["Financial_Stress"].replace(["High","Moderate","Low"],[2,1,0],inplace=True)
+data["Extracurricular_Involvement"].replace(["High","Moderate","Low"],[2,1,0],inplace=True)
 
-data["Stress_Level"].replace({0:"Low",1:"Low",2:"Low",3:"Moderate",4:"Moderate",5:"High",6:"High"},inplace=True)
+
+data["Stress_Level"].replace({0:"Low",1:"Low",2:"Low",3:"Medium",4:"Medium",5:"High",6:"High"},inplace=True)
 
 # Kept Data : Age, CGPA, Stress_Level, Sleep_Quality, Physical_Activity, Diet_Quality, Social_Support, Counseling_Service_Use, Family_History, Chronic_Illness, Financial_Stress, Semester_Credit_Load
 
 # Define data
-X = data[["Sleep_Quality", "Diet_Quality", "Physical_Activity", "Social_Support", "Counseling_Service_Use", "Family_History", "Chronic_Illness", "Semester_Credit_Load"]].values
+X = data[["Anxiety_Score", "Depression_Score", "Sleep_Quality", "Diet_Quality", "Physical_Activity", "Social_Support", "Counseling_Service_Use", "Family_History", "Chronic_Illness", "Extracurricular_Involvement", "Semester_Credit_Load"]].values
 y = data[["Stress_Level"]].values
 
 # Split data into training and test
