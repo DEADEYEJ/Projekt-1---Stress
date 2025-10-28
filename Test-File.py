@@ -19,6 +19,8 @@ data["Family_History"].replace(["Yes","No"],[1,0],inplace=True)
 data["Chronic_Illness"].replace(["Yes","No"],[1,0],inplace=True)
 data["Financial_Stress"].replace(["High","Moderate","Low"],[2,1,0],inplace=True)
 
+data["Stress_Level"].replace({0:"Low",1:"Low",2:"Low",3:"Moderate",4:"Moderate",5:"High",6:"High"},inplace=True)
+
 # Kept Data : Age, CGPA, Stress_Level, Sleep_Quality, Physical_Activity, Diet_Quality, Social_Support, Counseling_Service_Use, Family_History, Chronic_Illness, Financial_Stress, Semester_Credit_Load
 
 # Define data
