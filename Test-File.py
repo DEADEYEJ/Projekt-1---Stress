@@ -26,7 +26,9 @@ X = data[["Sleep_Quality", "Diet_Quality", "Physical_Activity", "Social_Support"
 y = data[["Stress_Level"]].values
 
 # Split data into training and test
-#X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+X_train_validation, X_test_validation, y_train_validation, y_test_validation = train_test_split(X_train, y_train, test_size=0.2, random_state=42) # validation set
+
 
 # Define classifiers
 knn_classifier = KNeighborsClassifier(n_neighbors=20) # Change hyperparameters
@@ -40,23 +42,23 @@ random_forest_classifier.fit(X_train, y_train)
 
 # Make predictions on both training and testing sets
 y_pred_knn_train = knn_classifier.predict(X_train)
-y_pred_knn_test = knn_classifier.predict(X_test)
+y_pred_knn_test = knn_classifier.predict(X_test_validation)
 
 y_pred_tree_train = decision_tree_classifier.predict(X_train)
-y_pred_tree_test = decision_tree_classifier.predict(X_test)
+y_pred_tree_test = decision_tree_classifier.predict(X_test_validation)
 
 y_pred_rf_train = random_forest_classifier.predict(X_train)
-y_pred_rf_test = random_forest_classifier.predict(X_test)
+y_pred_rf_test = random_forest_classifier.predict(X_test_validation)
 
 # Calculate training and testing accuracy
 accuracy_knn_train = accuracy_score(y_train, y_pred_knn_train)
-accuracy_knn_test = accuracy_score(y_test, y_pred_knn_test)
+accuracy_knn_test = accuracy_score(y_test_validation, y_pred_knn_test)
 
 accuracy_tree_train = accuracy_score(y_train, y_pred_tree_train)
-accuracy_tree_test = accuracy_score(y_test, y_pred_tree_test)
+accuracy_tree_test = accuracy_score(y_test_validation, y_pred_tree_test)
 
 accuracy_rf_train = accuracy_score(y_train, y_pred_rf_train)
-accuracy_rf_test = accuracy_score(y_test, y_pred_rf_test)
+accuracy_rf_test = accuracy_score(y_test_validation, y_pred_rf_test)
 
 # Print the results
 print('Model accuracy')
