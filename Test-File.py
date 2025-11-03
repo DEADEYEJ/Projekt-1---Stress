@@ -34,7 +34,7 @@ y = data[["Stress_Level"]].values
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 X_train_validation, X_test_validation, y_train_validation, y_test_validation = train_test_split(X_train, y_train, test_size=0.2, random_state=42) # validation set
 
-k_folds = KFold(n_splits = 5)
+k_folds = KFold(n_splits = 6)
 
 clf = RandomForestClassifier(random_state=42)
 
